@@ -1,0 +1,26 @@
+[package]
+name = "leptos_viz"
+version = "0.6.0"
+edition = "2021"
+authors = ["Greg Johnston", "Fangdun Tsai"]
+license = "MIT"
+repository = "https://github.com/leptos-rs/leptos"
+description = "Viz integrations for the Leptos web framework."
+
+[dependencies]
+viz = "0.8.0"
+futures = "0.3"
+http = "1.0.0"
+http-body-util = "0.1.0"
+hyper = "1.1.0"
+leptos = { git = "https://github.com/leptos-rs/leptos.git", rev = "1eaf886", features = ["ssr"] }
+leptos_meta = { git = "https://github.com/leptos-rs/leptos.git", rev = "1eaf886", features = ["ssr"] }
+leptos_router = { git = "https://github.com/leptos-rs/leptos.git", rev = "1eaf886", features = ["ssr"] }
+leptos_integration_utils = { git = "https://github.com/leptos-rs/leptos.git", rev = "1eaf886" }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+parking_lot = "0.12.1"
+
+[features]
+nonce = ["leptos/nonce"]
+experimental-islands = ["leptos_integration_utils/experimental-islands"]
