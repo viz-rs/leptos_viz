@@ -28,7 +28,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@nightly
-      - run: cargo test --workspace --verbose
+      - uses: taiki-e/install-action@cargo-hack
+      - run: cargo hack test --workspace --verbose
 
   clippy:
     name: Clippy
@@ -36,7 +37,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@clippy
-      - run: cargo clippy --tests
+      - uses: taiki-e/install-action@cargo-hack
+      - run: cargo hack clippy --tests
 
   fmt:
     name: Fmt
