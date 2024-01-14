@@ -19,7 +19,9 @@ cfg_if! {
         // use http::{header::SET_COOKIE, HeaderMap, HeaderValue, StatusCode};
 
         pub async fn db() -> Result<SqliteConnection, ServerFnError> {
-            Ok(SqliteConnection::connect("sqlite:Todos.db").await?)
+            let mut path = std::env::current_dir().unwrap();
+            path.push("examples/todo_app_sqlite_viz");
+            Ok(SqliteConnection::connect(&format!("sqlite:{}/Todos.db", path.display())).await?)
         }
     }
 }

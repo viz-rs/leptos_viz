@@ -8,9 +8,10 @@ cfg_if! {
     use crate::todo::*;
     use leptos_viz::{generate_route_list, LeptosRoutes};
     use todo_app_sqlite_viz::*;
+    use tokio::net::TcpListener;
     use viz::{
         types::{State, StateError},
-        Request, RequestExt, Response, Result, Router, ServiceMaker,
+        Request, RequestExt, Response, Result, Router, serve
     };
 
     //Define a handler to test extractor with state
@@ -65,13 +66,10 @@ cfg_if! {
             .get("/*", file_and_error_handler)
             .with(State(leptos_options));
 
-        // run our app with hyper
-        // `viz::Server` is a re-export of `hyper::Server`
+        let listener = TcpListener::bind(addr).await.unwrap();
+        // run our app
         logging::log!("listening on http://{}", &addr);
-        viz::Server::bind(&addr)
-            .serve(ServiceMaker::from(app))
-            .await
-            .unwrap();
+        serve(listener, app).await.unwrap();
     }
 }
 

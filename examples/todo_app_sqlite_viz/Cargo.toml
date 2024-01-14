@@ -12,7 +12,7 @@ console_error_panic_hook = "0.1.7"
 cfg-if = "1.0.0"
 log = "0.4.17"
 simple_logger = "4.0.0"
-sqlx = { version = "0.6.2", features = [
+sqlx = { version = "0.7.3", features = [
   "runtime-tokio-rustls",
   "sqlite",
 ], optional = true }
@@ -20,7 +20,7 @@ thiserror = "1.0.38"
 wasm-bindgen = "0.2"
 
 serde.workspace = true
-viz = { workspace = true, optional = true }
+viz = { workspace = true, features = ["serve"], optional = true }
 tokio = { workspace = true, features = ["full"], optional = true }
 http.workspace = true
 futures.workspace = true
