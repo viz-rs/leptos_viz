@@ -12,15 +12,24 @@ http-body-util = "0.1.0"
 hyper = "1.1.0"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-tokio = { version = "1", default-features = false }
 parking_lot = "0.12.1"
+cfg-if = "1"
+
+tokio = { version = "1", default-features = false }
+tokio-util = { version = "0.7", features = ["rt"] }
 
 leptos_viz = { path = "." }
-leptos = { git = "https://github.com/leptos-rs/leptos.git", rev = "1eaf886" }
-leptos_meta = { git = "https://github.com/leptos-rs/leptos.git", rev = "1eaf886" }
-leptos_router = { git = "https://github.com/leptos-rs/leptos.git", rev = "1eaf886" }
-leptos_reactive = { git = "https://github.com/leptos-rs/leptos.git", rev = "1eaf886" }
-leptos_integration_utils = { git = "https://github.com/leptos-rs/leptos.git", rev = "1eaf886" }
+leptos = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
+leptos_macro = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
+leptos_meta = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
+leptos_router = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
+leptos_reactive = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
+leptos_integration_utils = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
+server_fn = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
+
+# registration system
+dashmap = "5"
+once_cell = "1"
 
 [package]
 name = "leptos_viz"
@@ -37,17 +46,27 @@ futures.workspace = true
 http.workspace = true
 http-body-util.workspace = true
 hyper.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+parking_lot.workspace = true
+cfg-if.workspace = true
+
 leptos = { workspace = true, features = ["ssr"] }
 leptos_meta = { workspace = true, features = ["ssr"] }
 leptos_router = { workspace = true, features = ["ssr"] }
 leptos_integration_utils.workspace = true
-serde_json.workspace = true
-tokio.workspace = true
-parking_lot.workspace = true
+server_fn = { workspace = true, features = ["ssr"] }
+
+dashmap.workspace = true
+once_cell.workspace = true
+
+tokio-util.workspace = true
 
 [dev-dependencies]
 tokio = { workspace = true, features = ["full"] }
 
 [features]
 nonce = ["leptos/nonce"]
+wasm = []
+default = ["tokio/full"]
 experimental-islands = ["leptos_integration_utils/experimental-islands"]

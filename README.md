@@ -1,7 +1,7 @@
 leptos_viz
 -----------
 
-Viz integrations for the [Leptos] web framework.
+Viz integration for the [Leptos] web framework.
 
 
 An example can be found [here].
