@@ -1,0 +1,13 @@
+[package]
+name = "leptos_viz_macro"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+server_fn_macro.workspace = true
+viz.workspace = true
+syn = "2.0.48"
+tracing = "0.1"

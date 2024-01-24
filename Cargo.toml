@@ -1,6 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
+  "leptos_viz_macro",
   "examples/*",
 ]
 
@@ -19,13 +20,16 @@ tokio = { version = "1", default-features = false }
 tokio-util = { version = "0.7", features = ["rt"] }
 
 leptos_viz = { path = "." }
-leptos = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
-leptos_macro = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
-leptos_meta = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
-leptos_router = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
-leptos_reactive = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
-leptos_integration_utils = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
-server_fn = { git = "https://github.com/leptos-rs/leptos.git", rev = "04747fc" }
+leptos_viz_macro = { path = "leptos_viz_macro" }
+
+leptos = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
+leptos_macro = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
+leptos_meta = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
+leptos_router = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
+leptos_reactive = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
+leptos_integration_utils = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
+server_fn = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
+server_fn_macro = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
 
 # registration system
 dashmap = "5"

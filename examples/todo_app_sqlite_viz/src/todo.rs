@@ -3,7 +3,9 @@ use cfg_if::cfg_if;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
+use leptos_viz_macro::server;
 use serde::{Deserialize, Serialize};
+use server_fn::codec::SerdeLite;
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[cfg_attr(feature = "ssr", derive(sqlx::FromRow))]
@@ -26,14 +28,14 @@ cfg_if! {
     }
 }
 
-#[server(GetTodos, "/api")]
+#[server]
 pub async fn get_todos() -> Result<Vec<Todo>, ServerFnError> {
     // this is just an example of how to access server context injected in the handlers
     // http::Request doesn't implement Clone, so more work will be needed to do use_context() on this
-    let req_parts = use_context::<leptos_viz::RequestParts>();
+    let parts = use_context::<http::request::Parts>();
 
-    if let Some(req_parts) = req_parts {
-        println!("Uri = {:?}", req_parts.uri);
+    if let Some(parts) = parts {
+        println!("Uri = {:?}", parts.uri);
     }
 
     use futures::TryStreamExt;
@@ -63,7 +65,7 @@ pub async fn get_todos() -> Result<Vec<Todo>, ServerFnError> {
     Ok(todos)
 }
 
-#[server(AddTodo, "/api")]
+#[server]
 pub async fn add_todo(title: String) -> Result<(), ServerFnError> {
     let mut conn = db().await?;
 
@@ -81,7 +83,7 @@ pub async fn add_todo(title: String) -> Result<(), ServerFnError> {
 }
 
 // The struct name and path prefix arguments are optional.
-#[server]
+#[server(output = SerdeLite)]
 pub async fn delete_todo(id: u16) -> Result<(), ServerFnError> {
     let mut conn = db().await?;
 
@@ -97,7 +99,6 @@ pub fn TodoApp() -> impl IntoView {
     //let id = use_context::<String>();
     provide_meta_context();
     view! {
-
         <Link rel="shortcut icon" type_="image/ico" href="/favicon.ico"/>
         <Stylesheet id="leptos" href="/pkg/todo_app_sqlite_viz.css"/>
         <Router>
@@ -126,7 +127,6 @@ pub fn Todos() -> impl IntoView {
     );
 
     view! {
-
         <div>
             <MultiActionForm action=add_todo>
                 <label>
