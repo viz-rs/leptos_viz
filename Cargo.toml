@@ -22,14 +22,14 @@ tokio-util = { version = "0.7", features = ["rt"] }
 leptos_viz = { path = "." }
 leptos_viz_macro = { path = "leptos_viz_macro" }
 
-leptos = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
-leptos_macro = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
-leptos_meta = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
-leptos_router = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
-leptos_reactive = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
-leptos_integration_utils = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
-server_fn = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
-server_fn_macro = { git = "https://github.com/leptos-rs/leptos.git", rev = "b450f0f" }
+leptos = "0.6.6"
+leptos_macro = "0.6.6"
+leptos_meta = "0.6.6"
+leptos_router = "0.6.6"
+leptos_reactive = "0.6.6"
+leptos_integration_utils = "0.6.6"
+server_fn = "0.6.6"
+server_fn_macro = "0.6.6"
 
 # registration system
 dashmap = "5"
